@@ -108,9 +108,29 @@
 
 Release 中的 `update`、`delta` ZIP 和 `update.json` 供应用内更新使用，手动安装只需下载 DMG。`SHA256SUMS.txt` 用于核对文件完整性，FFmpeg 源码附件用于履行第三方许可证要求。
 
+### macOS 首次打开（重要）
+
+> **提示“应用已损坏，无法打开”或“无法验证开发者”？**
+> 当前安装包尚未经过 Apple Developer ID 公证。请先确认安装包来自本仓库的 [正式 Release](https://github.com/angrypandahu/yingji-releases/releases/latest)，并将 `Yingji.app` 拖入“应用程序”，再打开 macOS「终端」执行：
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/Yingji.app"
+```
+
+执行成功后通常没有输出，重新双击“应用程序”中的影记即可。该命令仅移除这份应用的下载隔离标记，不会删除影记资料，也不会关闭系统的全局安全保护。
+
+- **提示没有该文件（No such file）**：确认已将应用复制到“应用程序”，而不是仍从 DMG 打开。若安装在其他位置或保留旧名 `Harbor Yingji.app`，请将命令中的路径改为实际应用路径，并保留双引号。
+- **提示权限不足（Permission denied / Operation not permitted）**：确认路径无误后，可执行下方命令。终端会要求输入 Mac 登录密码，输入时不会显示字符：
+
+  ```bash
+  sudo xattr -dr com.apple.quarantine "/Applications/Yingji.app"
+  ```
+
+若仍被拦截，可在“系统设置 → 隐私与安全性”中按提示允许打开。移除隔离标记不能修复真正损坏的安装包；仍无法打开时，请重新下载正式 DMG。
+
 ## 快速开始
 
-1. **安装影记**：下载 DMG，将 `Yingji.app` 拖到“应用程序”后打开。当前安装包尚无 Apple Developer ID 公证；如 macOS 拦截，请确认来自本仓库正式 Release，再按“系统设置 → 隐私与安全性”中的提示允许打开。
+1. **安装影记**：下载 DMG，将 `Yingji.app` 拖到“应用程序”。首次打开如被 macOS 拦截，请先按上方「macOS 首次打开（重要）」执行 `xattr` 命令，再打开应用。
 2. **准备资料目录与环境**：选择本地资料文件夹，按提示准备运行环境；需要音视频转写时，再下载转写模型。
 3. **添加第一份内容**：直接粘贴视频链接，或在“设置 → 来源账号”连接账号后刷新收藏夹。需要整理笔记时接入并测试 Agent；需要处理公众号或发布文档时完成飞书配置。
 

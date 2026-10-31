@@ -93,20 +93,22 @@
 
 首次接入时，**自动发布、接收视频链接、接收公众号文章、接收与结果回执默认选中**，也可自行关闭。自动发布在确认目录后生效，两类接收与回执在完成接入后生效；同一身份已保存的关闭选择会保留，新应用或新授权用户重新进入首次配置。
 
+v0.0.12 的「收到链接后」首次默认选择**整理并发布飞书**；仍需可用 Agent、目标目录并完成接入后生效，已有处理方式保持。接入后可点击应用卡片上的**打开飞书聊天**进入当前机器人的会话；此操作不会自动发消息。
+
 消息回复还需要「以应用的身份发消息」权限。v0.0.11 的应用接入已补齐申请；已有应用若缺少此权限，请在飞书后台开通并核对生效状态。旧收件保持接收时的回执设置，结果未知时可在核对后仅重发回执，无需重复处理内容。
 
 公司组织可能需要管理员审批，影记不能替代飞书的审核规则。再次发布文档可能覆盖飞书中的人工修改，建议在本地 Markdown 中维护正文。
 
 ## 下载与更新
 
-当前版本：**[v0.0.11](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.0.11)**。
+当前版本：**[v0.0.12](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.0.12)**。
 
 | 平台 | 下载 |
 | --- | --- |
-| macOS · Apple Silicon（M 系列） | [下载 v0.0.11 DMG](https://github.com/angrypandahu/yingji-releases/releases/download/v0.0.11/Yingji-0.0.11-macOS-arm64.dmg) |
+| macOS · Apple Silicon（M 系列） | [下载 v0.0.12 DMG](https://github.com/angrypandahu/yingji-releases/releases/download/v0.0.12/Yingji-0.0.12-macOS-arm64.dmg) |
 | Intel Mac、Windows、Linux | 当前公开版本未提供安装包 |
 
-已安装用户可在“设置 → 通用 → 应用更新”中检查、下载并重启安装。v0.0.10 → v0.0.11 支持增量更新；其他支持应用内更新的版本使用完整更新包。更新前请结束正在运行的任务。
+已安装用户可在“设置 → 通用 → 应用更新”中检查、下载并重启安装。v0.0.11 → v0.0.12 支持增量更新；其他支持应用内更新的版本使用完整更新包。更新前请结束正在运行的任务。
 
 Release 中的 `update`、`delta` ZIP 和 `update.json` 供应用内更新使用，手动安装只需下载 DMG。`SHA256SUMS.txt` 用于核对文件完整性，FFmpeg 源码附件用于履行第三方许可证要求。
 
@@ -156,7 +158,7 @@ xattr -dr com.apple.quarantine "/Applications/Yingji.app"
 <details>
 <summary><strong>升级会删除资料或要求重新配置吗？</strong></summary>
 
-正常应用内更新或覆盖安装会保留本地资料、模型、运行环境和已有授权。v0.0.10 → v0.0.11 已验证实际安装升级、资料关联及 Agent 授权保留。升级前请结束任务，不要删除自己的资料目录。
+正常应用内更新或覆盖安装会保留本地资料、模型、运行环境和已有授权。v0.0.11 → v0.0.12 已验证实际安装升级、资料关联及 Agent 授权保留。升级前请结束任务，不要删除自己的资料目录。
 
 </details>
 

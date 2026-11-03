@@ -106,11 +106,12 @@ v0.0.12 的「收到链接后」首次默认选择**整理并发布飞书**；�
 | 平台 | 下载 |
 | --- | --- |
 | macOS · Apple Silicon（M 系列） | [下载 v0.0.12 DMG](https://github.com/angrypandahu/yingji-releases/releases/download/v0.0.12/Yingji-0.0.12-macOS-arm64.dmg) |
-| Intel Mac、Windows、Linux | 当前公开版本未提供安装包 |
+| Windows · x64 | [下载 v0.0.12 EXE](https://github.com/angrypandahu/yingji-releases/releases/download/v0.0.12/Yingji-0.0.12-Windows-x64.exe) |
+| Intel Mac、Linux | 当前公开版本未提供安装包 |
 
 已安装用户可在“设置 → 通用 → 应用更新”中检查、下载并重启安装。v0.0.11 → v0.0.12 支持增量更新；其他支持应用内更新的版本使用完整更新包。更新前请结束正在运行的任务。
 
-Release 中的 `update`、`delta` ZIP 和 `update.json` 供应用内更新使用，手动安装只需下载 DMG。`SHA256SUMS.txt` 用于核对文件完整性，FFmpeg 源码附件用于履行第三方许可证要求。
+macOS 手动安装只需下载 DMG，Windows 用户下载 EXE 安装包。Release 中的 `update`、`delta` ZIP 和 `update.json` 供应用内更新使用。`SHA256SUMS.txt` 用于核对 macOS 文件完整性，`SHA256SUMS.windows-x64` 用于核对 Windows 安装包，FFmpeg 源码附件用于履行第三方许可证要求。
 
 ### macOS 首次打开（重要）
 

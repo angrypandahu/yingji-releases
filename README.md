@@ -101,14 +101,14 @@ v0.0.12 的「收到链接后」首次默认选择**整理并发布飞书**；�
 
 ## 下载与更新
 
-当前版本：**[v0.0.12](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.0.12)**。
+当前 Mac 版本为 **[v0.1.0](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.1.0)**。首装向导可复制示例链接并打开飞书「影记助手」私聊，由你粘贴发送。
 
 | 平台 | 下载 |
 | --- | --- |
-| macOS · Apple Silicon（M 系列） | [下载 v0.0.12 DMG](https://github.com/angrypandahu/yingji-releases/releases/download/v0.0.12/Yingji-0.0.12-macOS-arm64.dmg) |
+| macOS · Apple Silicon（M 系列） | [下载 v0.1.0 DMG](https://github.com/angrypandahu/yingji-releases/releases/download/v0.1.0/Yingji-0.1.0-macOS-arm64.dmg) |
 | Intel Mac、Windows、Linux | 当前公开版本未提供安装包 |
 
-已安装用户可在“设置 → 通用 → 应用更新”中检查、下载并重启安装。v0.0.11 → v0.0.12 支持增量更新；其他支持应用内更新的版本使用完整更新包。更新前请结束正在运行的任务。
+已安装用户可在“设置 → 通用 → 应用更新”中检查、下载并重启安装。v0.0.12 → v0.1.0 支持增量更新；其他支持应用内更新的版本使用完整更新包。更新前请结束正在运行的任务。
 
 Release 中的 `update`、`delta` ZIP 和 `update.json` 供应用内更新使用，手动安装只需下载 DMG。`SHA256SUMS.txt` 用于核对文件完整性，FFmpeg 源码附件用于履行第三方许可证要求。
 
@@ -158,7 +158,7 @@ xattr -dr com.apple.quarantine "/Applications/Yingji.app"
 <details>
 <summary><strong>升级会删除资料或要求重新配置吗？</strong></summary>
 
-正常应用内更新或覆盖安装会保留本地资料、模型、运行环境和已有授权。v0.0.11 → v0.0.12 已验证实际安装升级、资料关联及 Agent 授权保留。升级前请结束任务，不要删除自己的资料目录。
+正常应用内更新或覆盖安装会保留本地资料、模型、运行环境和已有授权。v0.0.12 → v0.1.0 已验证实际安装升级、资料关联及 Agent 授权保留。升级前请结束任务，不要删除自己的资料目录。
 
 </details>
 

@@ -2,7 +2,7 @@
 
 **把视频发给飞书里的「影记助手」，在同一个私聊里打开配图笔记。** 平时收藏在抖音、小红书、B 站的作品，也能同步到电脑，挑选值得整理的内容。
 
-[下载 Mac 版（Apple Silicon）](https://github.com/angrypandahu/yingji-releases/releases/download/v0.1.0/Yingji-0.1.0-macOS-arm64.dmg)　·　[看收藏夹同步](#collections)　·　[安装与快速开始](#install)
+[下载 Mac 版（Apple Silicon）](https://github.com/angrypandahu/yingji-releases/releases/download/v0.1.1/Yingji-0.1.1-macOS-arm64.dmg)　·　[看收藏夹同步](#collections)　·　[安装与快速开始](#install)
 
 ## 在飞书发一条视频，收回一篇笔记
 
@@ -28,7 +28,7 @@
 
 ## 安装与快速开始
 
-1. **安装桌面端。** 从正式发行页下载 Mac Apple Silicon 的 DMG，将影记拖入「应用程序」。目前的 Mac 安装包使用 ad-hoc 签名，尚未经 Apple 公证。[v0.1.0 发行说明与校验文件](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.1.0)
+1. **安装桌面端。** 从正式发行页下载 Mac Apple Silicon 的 DMG，将影记拖入「应用程序」。目前的 Mac 安装包使用 ad-hoc 签名，尚未经 Apple 公证。[v0.1.1 发行说明与校验文件](https://github.com/angrypandahu/yingji-releases/releases/tag/v0.1.1)
 2. **选本地资料目录和整理助手。** 按向导准备运行环境并测试助手连接。视频转写在本机完成，笔记由你选的外部 Agent 整理。
 3. **选一个入口试用。** 想用飞书就跟向导授权、选好笔记目录并试发一条；想整理已有收藏就连接来源账号，再去收藏夹检查新增。
 
@@ -47,7 +47,7 @@
 <details>
 <summary>资料保存在哪里？已有版本如何升级？</summary>
 
-原始音视频、本地 Markdown 和配图保存在你选择的资料目录。发布到飞书的是文档及配图。已安装 v0.0.12 的 Mac 用户可以在「设置 → 通用 → 应用更新」升级到 v0.1.0。
+原始音视频、本地 Markdown 和配图保存在你选择的资料目录。发布到飞书的是文档及配图。如果启动时找不到原资料库，可以重新定位它，或启用独立新库。已安装 v0.1.0 的 Mac 用户可以在「设置 → 通用 → 应用更新」增量升级到 v0.1.1。
 </details>
 
 [历次更新](https://github.com/angrypandahu/yingji-releases/releases)　·　[反馈问题](https://github.com/angrypandahu/yingji-releases/issues)

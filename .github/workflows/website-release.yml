@@ -1,0 +1,68 @@
+name: Website release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find DMG asset
+        id: asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          name=$(gh release view "$TAG" --json assets --jq '.assets[].name | select(endswith(".dmg"))' | head -n1)
+          test -n "$name"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+      - name: Download DMG asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ASSET_NAME: ${{ steps.asset.outputs.name }}
+        run: gh release download "$TAG" --pattern "$ASSET_NAME" --dir "$RUNNER_TEMP/release"
+      - name: Check OSS file
+        env:
+          OSS_BASE_URL: https://yj.jingshenkeji.cn
+        run: curl --fail --head "$OSS_BASE_URL/${{ steps.asset.outputs.name }}"
+      - name: Build website
+        env:
+          OSS_BASE_URL: https://yj.jingshenkeji.cn
+          ASSET_NAME: ${{ steps.asset.outputs.name }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("website/site.json")
+          site = json.loads(path.read_text())
+          site.update(version=os.environ["TAG"], file=os.environ["ASSET_NAME"], base_url=os.environ["OSS_BASE_URL"])
+          path.write_text(json.dumps(site, ensure_ascii=False, indent=2) + "\n")
+          PY
+          python3 website/build.py --download "$RUNNER_TEMP/release/$ASSET_NAME" --check
+      - name: Commit release metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website
+          git diff --cached --quiet && exit 0
+          git commit -m "website: update $TAG"
+          git push
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.YINGJI_ECS_HOST }}
+          username: ${{ secrets.YINGJI_ECS_USER }}
+          key: ${{ secrets.YINGJI_ECS_SSH_KEY }}
+          port: ${{ secrets.YINGJI_ECS_PORT }}
+          script: |
+            sudo /usr/local/bin/deploy-yingji-website

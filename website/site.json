@@ -1,0 +1,14 @@
+{
+  "version": "v0.1.1",
+  "file": "Yingji-0.1.1-macOS-arm64.dmg",
+  "size": "175MB",
+  "sha256": "51eb471bce04800abe40b4ae8d9d40e99382cd705b1822ab78aaf5d0e0697299",
+  "base_url": "https://yj.jingshenkeji.cn",
+  "icon": "icon.png",
+  "demos": {
+    "feishu_chat": "feishu-chat.gif",
+    "feishu_note": "feishu-note.png",
+    "collections": "collections.gif"
+  },
+  "repo": "angrypandahu/yingji-releases"
+}

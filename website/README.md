@@ -25,28 +25,16 @@ python3 website/build.py --check
 - `YINGJI_ECS_SSH_KEY`
 - `YINGJI_ECS_PORT`
 
-ECS 准备：
+专用账号为 `yingji-deploy`。Actions 校验 `ecs_known_hosts` 中从可信 ECS 会话取得的服务器公钥；私钥只保存在 GitHub Actions secret 与发布机受限目录。
 
-```sh
-useradd --create-home --shell /bin/sh yingji-deploy
-install --directory --owner yingji-deploy /opt/yingji-releases
-runuser -u yingji-deploy -- git clone https://github.com/angrypandahu/yingji-releases.git /opt/yingji-releases
-```
-
-部署脚本内容：
-
-```sh
-#!/bin/sh
-set -eu
-cd /opt/yingji-releases
-git fetch origin main
-git reset --hard origin/main
-install -m 0644 website/index.html /clouddream/yingji-website/index.html
-curl --fail --silent --show-error --max-time 30 http://127.0.0.1:18090/ >/dev/null
-```
-
-`sudo` 配置：
+把本目录的 `deploy-ecs.sh` 安装为 root 管理的 `/usr/local/bin/deploy-yingji-website`（0755）。为专用账号配置以下两处，公钥替换为实际部署公钥。
 
 ```text
-yingji-deploy ALL=(root) NOPASSWD: /usr/local/bin/deploy-yingji-website
+# ~yingji-deploy/.ssh/authorized_keys
+restrict,command="sudo -n /usr/local/bin/deploy-yingji-website" ssh-ed25519 <部署公钥>
+
+# /etc/sudoers.d/yingji-website
+yingji-deploy ALL=(root) NOPASSWD: /usr/local/bin/deploy-yingji-website ""
 ```
+
+部署命令从标准输入读取当前页面的 SHA-256，从公开仓库 main 取回对应页面，校验后原子替换。ECS 在本机检查站点返回的完整页面摘要；失败时恢复上一份页面。最近一次部署前的页面保存在 `/var/backups/yingji-website/index.previous.html`。

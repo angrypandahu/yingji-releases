@@ -60,11 +60,17 @@ jobs:
           git commit -m "website: update $TAG"
           git push
       - name: Deploy
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.YINGJI_ECS_HOST }}
-          username: ${{ secrets.YINGJI_ECS_USER }}
-          key: ${{ secrets.YINGJI_ECS_SSH_KEY }}
-          port: ${{ secrets.YINGJI_ECS_PORT }}
-          script: |
-            sudo /usr/local/bin/deploy-yingji-website
+        env:
+          DEPLOY_HOST: ${{ secrets.YINGJI_ECS_HOST }}
+          DEPLOY_PORT: ${{ secrets.YINGJI_ECS_PORT }}
+          DEPLOY_USER: ${{ secrets.YINGJI_ECS_USER }}
+          DEPLOY_KEY: ${{ secrets.YINGJI_ECS_SSH_KEY }}
+        run: |
+          key=$(mktemp "$RUNNER_TEMP/yingji-deploy.XXXXXX")
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$DEPLOY_KEY" > "$key"
+          unset DEPLOY_KEY
+          sha256sum website/index.html | cut -d' ' -f1 | ssh -T -i "$key" -p "$DEPLOY_PORT" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            -o ConnectTimeout=15 -o HostKeyAlias=yingji-website-ecs \
+            -o UserKnownHostsFile=website/ecs_known_hosts "$DEPLOY_USER@$DEPLOY_HOST" deploy

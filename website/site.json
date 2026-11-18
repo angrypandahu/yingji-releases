@@ -1,8 +1,8 @@
 {
-  "version": "v0.1.2",
-  "file": "Yingji-0.1.2-macOS-arm64.dmg",
+  "version": "v0.1.14",
+  "file": "Yingji-0.1.14-macOS-arm64.dmg",
   "size": "176MB",
-  "sha256": "b44d7726daa7faa09da85c0d064722c37408b0c3aa853b1f31df79488843548c",
+  "sha256": "68064e57bb652cfaec3a08cba236607690db60e1923940d6028b316876528dc5",
   "base_url": "https://yj.jingshenkeji.cn",
   "icon": "icon.png",
   "demos": {

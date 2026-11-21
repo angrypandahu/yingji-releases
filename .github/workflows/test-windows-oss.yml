@@ -1,0 +1,20 @@
+name: Test Windows OSS upload
+on:
+  push:
+    paths:
+      - scripts/upload-windows-oss.ps1
+      - scripts/tests/upload-windows-oss.test.ps1
+      - .github/workflows/test-windows-oss.yml
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: ./scripts/tests/upload-windows-oss.test.ps1
+        shell: pwsh

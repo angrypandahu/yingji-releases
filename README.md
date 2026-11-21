@@ -51,3 +51,5 @@
 </details>
 
 [历次更新](https://github.com/angrypandahu/yingji-releases/releases)　·　[反馈问题](https://github.com/angrypandahu/yingji-releases/issues)
+
+[Windows 发行维护：上传 OSS 与上线官网](website/windows-oss.md)

@@ -1,8 +1,4 @@
 {
-  "version": "v0.1.14",
-  "file": "Yingji-0.1.14-macOS-arm64.dmg",
-  "size": "176MB",
-  "sha256": "68064e57bb652cfaec3a08cba236607690db60e1923940d6028b316876528dc5",
   "base_url": "https://yj.jingshenkeji.cn",
   "icon": "icon.png",
   "demos": {
@@ -10,5 +6,13 @@
     "feishu_note": "feishu-note.png",
     "collections": "collections.gif"
   },
-  "repo": "angrypandahu/yingji-releases"
+  "repo": "angrypandahu/yingji-releases",
+  "downloads": {
+    "mac": {
+      "version": "v0.1.14",
+      "file": "Yingji-0.1.14-macOS-arm64.dmg",
+      "bytes": 184566621,
+      "sha256": "68064e57bb652cfaec3a08cba236607690db60e1923940d6028b316876528dc5"
+    }
+  }
 }

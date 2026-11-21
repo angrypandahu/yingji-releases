@@ -12,9 +12,9 @@ python3 website/build.py --check
 
 ## 发版
 
-1. 发布 GitHub Release，并上传 Mac DMG。
-2. 把同名 DMG 和需要更新的演示图上传到 OSS 根目录。
-3. 在 Actions 里确认 `Website release`：它会校验 OSS 文件、更新 `site.json` / `index.html`、提交到 `main`，并部署到 ECS。
+1. 将本次平台的正式安装包上传到上海 OSS 根目录，并将同一份文件附到对应的 GitHub 稳定 Release。文件名为 `Yingji-X.Y.Z-macOS-arm64.dmg` 或 `Yingji-X.Y.Z-Windows-x64.exe`。
+2. 发布 Release 会触发 `Website release`。工作流从 OSS 读取本次安装包，比对 Release 附件的字节数和 SHA-256，分别记录两个平台的版本和发行说明。单平台发版会保留另一平台已开放的版本。Windows 下载按钮只在 OSS 对象可匿名访问时显示。
+3. 如发布时 Windows EXE 尚未上传到 OSS，上传完成后在 Actions 手动运行 **Website release**，选择 `main` 并输入 Windows 包所属的 Release 标签。给已公开的 Release 补传附件也需要这样重跑。随后检查 Deploy 步骤及两个官网域名的下载按钮。
 
 ## 一次性准备
 

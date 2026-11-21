@@ -3,13 +3,13 @@ $ErrorActionPreference = 'Stop'
 $upload = Join-Path $PSScriptRoot '../upload-windows-oss.ps1'
 $dir = (New-Item -ItemType Directory -Path (Join-Path ([IO.Path]::GetTempPath()) ([guid]::NewGuid()))).FullName
 $remote = @{}
-$bucket = 'oss://jingshenkeji-yingji-releases/'
+$fixtureBucketPrefix = 'oss://jingshenkeji-yingji-releases/'
 $base = 'https://yj.jingshenkeji.cn/'
 function ossutil($command, $source, $destination) {
-    if ($command -ne 'cp' -or $args -notcontains '--ignore-existing' -or !$destination.StartsWith($bucket)) {
+    if ($command -ne 'cp' -or $args -notcontains '--ignore-existing' -or !$destination.StartsWith($fixtureBucketPrefix)) {
         throw 'unexpected upload'
     }
-    $key = $destination.Substring($bucket.Length)
+    $key = $destination.Substring($fixtureBucketPrefix.Length)
     if (!$remote.ContainsKey($key)) { $remote[$key] = [IO.File]::ReadAllBytes($source) }
     $global:LASTEXITCODE = 0
 }
